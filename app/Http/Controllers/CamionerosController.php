@@ -26,17 +26,22 @@ class CamionerosController extends Controller
     public function Listar()
     {
 
-        $producto = Camionero::all();
+        $camionero = Camionero::all();
 
-        return view('camioneros.Listar', ['camioneros' => $camioneros]);
+        return response()->json($camionero);
     }
 
-    public function Eliminar(Camionero $camionero)
+    public function Eliminar(Request $request, $id)
     {
 
-        $producto->delete();
-        return redirect("/");
+        $camionero = Camionero::find($id);
 
+        if ($camionero) {
+            $camionero->delete();
+            return response()->json(['error' => 'El camionero esta borrado'], 200);
+        }
+
+        return response()->json(['error' => 'El camionero no existe'], 404);
     }
 
     public function Editar(Camionero $camionero)
@@ -56,8 +61,7 @@ class CamionerosController extends Controller
         $camionero->fechanac = $request->input('fechanac');
         
         $camionero->save();
-
-        return redirect("/");
+        return response()->json($camionero);
     }
 
 }

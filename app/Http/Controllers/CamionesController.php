@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Camiones;
+use Illuminate\Http\Request;
 
 class CamionesController extends Controller
 {
@@ -14,7 +14,7 @@ class CamionesController extends Controller
         $camiones->matricula = $request->input('matricula');
         $camiones->marca = $request->input('marca');
         $camiones->modelo = $request->input('modelo');
-        $camiones->capacidad_peso = $request->input('capacidad_peso');        
+        $camiones->capacidad_peso = $request->input('capacidad_peso');
         $camiones->save();
 
         return response()->json(['message' => 'Camion creado exitosamente'], 200);
@@ -26,15 +26,20 @@ class CamionesController extends Controller
 
         $camiones = Camiones::all();
 
-        return view('camiones.Listar', ['camiones' => $camiones]);
+        return response()->json($camiones);
     }
 
-    public function Eliminar(Camiones $camiones)
+    public function Eliminar(Request $request, $id)
     {
 
-        $camiones->delete();
-        return redirect("/");
+        $camiones = Camiones::find($id);
 
+        if ($camiones) {
+            $camiones->delete();
+            return response()->json(['error' => 'El camion esta borrado'], 200);
+        }
+
+        return response()->json(['error' => 'El camion no existe'], 404);
     }
 
     public function Editar(Camiones $camiones)
@@ -49,9 +54,9 @@ class CamionesController extends Controller
         $camiones->matricula = $request->input('matricula');
         $camiones->marca = $request->input('marca');
         $camiones->modelo = $request->input('modelo');
-        $camiones->capacidad_peso = $request->input('capacidad_peso');         
+        $camiones->capacidad_peso = $request->input('capacidad_peso');
         $camiones->save();
 
-        return redirect("/");
+        return response()->json($camiones);
     }
 }
