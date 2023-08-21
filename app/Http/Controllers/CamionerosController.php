@@ -45,5 +45,18 @@ class CamionerosController extends Controller
         return view('camioneros.Editar', compact('camioneros'));
     }
 
+    public function Actualizar(Camionero $request, Camionero $camionero)
+    {
+
+        $camionero = new Camionero;
+        $camionero->matricula = $request->input('matricula');
+        $camionero->marca = $request->input('marca');
+        $camionero->modelo = $request->input('modelo');
+        $camionero->capacidad_peso = $request->input('capacidad_peso'); 
+        $camionero->save();
+
+        return redirect("/");
+    }
+
 
 }
