@@ -36,4 +36,9 @@ class CamionesController extends Controller
         return redirect("/");
 
     }
+
+    public function Editar(Camiones $camiones)
+    {
+        return view('camiones.Editar', compact('camiones'));
+    }
 }
