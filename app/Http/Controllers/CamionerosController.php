@@ -32,4 +32,13 @@ class CamionerosController extends Controller
     }
 
 
+    public function Eliminar(Camionero $camionero)
+    {
+
+        $producto->delete();
+        return redirect("/");
+
+    }
+
+
 }
