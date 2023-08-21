@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Camionero;
-
+use Illuminate\Http\Request;
 
 class CamionerosController extends Controller
 {
@@ -12,16 +11,17 @@ class CamionerosController extends Controller
     {
 
         $camionero = new Camionero;
-        $camionero->matricula = $request->input('matricula');
-        $camionero->marca = $request->input('marca');
-        $camionero->modelo = $request->input('modelo');
-        $camionero->capacidad_peso = $request->input('capacidad_peso');          
+        $camionero->ci = $request->input('ci');
+        $camionero->nombre = $request->input('nombre');
+        $camionero->apellido = $request->input('apellido');
+        $camionero->celular = $request->input('celular');
+        $camionero->email = $request->input('email');
+        $camionero->fechanac = $request->input('fechanac');
         $camionero->save();
 
         return response()->json(['message' => 'Camionero creado exitosamente'], 200);
 
     }
-
 
     public function Listar()
     {
@@ -30,7 +30,6 @@ class CamionerosController extends Controller
 
         return view('camioneros.Listar', ['camioneros' => $camioneros]);
     }
-
 
     public function Eliminar(Camionero $camionero)
     {
@@ -49,14 +48,16 @@ class CamionerosController extends Controller
     {
 
         $camionero = new Camionero;
-        $camionero->matricula = $request->input('matricula');
-        $camionero->marca = $request->input('marca');
-        $camionero->modelo = $request->input('modelo');
-        $camionero->capacidad_peso = $request->input('capacidad_peso'); 
+        $camionero->ci = $request->input('ci');
+        $camionero->nombre = $request->input('nombre');
+        $camionero->apellido = $request->input('apellido');
+        $camionero->celular = $request->input('celular');
+        $camionero->email = $request->input('email');
+        $camionero->fechanac = $request->input('fechanac');
+        
         $camionero->save();
 
         return redirect("/");
     }
-
 
 }
