@@ -21,4 +21,15 @@ class CamionerosController extends Controller
         return response()->json(['message' => 'Camionero creado exitosamente'], 200);
 
     }
+
+
+    public function Listar()
+    {
+
+        $producto = Camionero::all();
+
+        return view('camioneros.Listar', ['camioneros' => $camioneros]);
+    }
+
+
 }
