@@ -40,5 +40,10 @@ class CamionerosController extends Controller
 
     }
 
+    public function Editar(Camionero $camionero)
+    {
+        return view('camioneros.Editar', compact('camioneros'));
+    }
+
 
 }
