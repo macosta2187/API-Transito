@@ -41,4 +41,17 @@ class CamionesController extends Controller
     {
         return view('camiones.Editar', compact('camiones'));
     }
+
+    public function Actualizar(Camiones $request, Camiones $camiones)
+    {
+
+        $camiones = new Camiones;
+        $camiones->matricula = $request->input('matricula');
+        $camiones->marca = $request->input('marca');
+        $camiones->modelo = $request->input('modelo');
+        $camiones->capacidad_peso = $request->input('capacidad_peso');         
+        $camiones->save();
+
+        return redirect("/");
+    }
 }
