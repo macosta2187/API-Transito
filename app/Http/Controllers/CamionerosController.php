@@ -12,8 +12,10 @@ class CamionerosController extends Controller
     {
 
         $camionero = new Camionero;
-        $camionero->libreta_vencimiento = $request->input('libreta_vencimiento');
-        $camionero->id_chofer = $request->input('id_chofer');        
+        $camionero->matricula = $request->input('matricula');
+        $camionero->marca = $request->input('marca');
+        $camionero->modelo = $request->input('modelo');
+        $camionero->capacidad_peso = $request->input('capacidad_peso');          
         $camionero->save();
 
         return response()->json(['message' => 'Camionero creado exitosamente'], 200);
