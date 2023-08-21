@@ -28,4 +28,12 @@ class CamionesController extends Controller
 
         return view('camiones.Listar', ['camiones' => $camiones]);
     }
+
+    public function Eliminar(Camiones $camiones)
+    {
+
+        $camiones->delete();
+        return redirect("/");
+
+    }
 }
