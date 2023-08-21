@@ -20,4 +20,12 @@ class CamionesController extends Controller
         return response()->json(['message' => 'Camion creado exitosamente'], 200);
 
     }
+
+    public function Listar()
+    {
+
+        $camiones = Camiones::all();
+
+        return view('camiones.Listar', ['camiones' => $camiones]);
+    }
 }
