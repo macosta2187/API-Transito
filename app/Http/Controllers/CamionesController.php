@@ -11,11 +11,9 @@ class CamionesController extends Controller
     {
 
         $camiones = new Camiones;
-        $camiones->matricula = $request->input('matricula');
-        $camiones->marca = $request->input('marca');
-        $camiones->modelo = $request->input('modelo');
-        $camiones->capacidad_peso = $request->input('capacidad_peso');
+        $camiones->id_camion = $request->input('id_camion');     
         $camiones->save();
+        
 
         return response()->json(['message' => 'Camion creado exitosamente'], 200);
 
@@ -51,10 +49,7 @@ class CamionesController extends Controller
     {
 
         $camiones = new Camiones;
-        $camiones->matricula = $request->input('matricula');
-        $camiones->marca = $request->input('marca');
-        $camiones->modelo = $request->input('modelo');
-        $camiones->capacidad_peso = $request->input('capacidad_peso');
+        $camiones->id_camion = $request->input('id_camion');       
         $camiones->save();
 
         return response()->json($camiones);

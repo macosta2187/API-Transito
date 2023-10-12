@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Camiones extends Model
+class Paquete extends Model
 {
     use HasFactory;
-    protected $table = 'camiones';
-    protected $fillable = ['id_camion'];
+    protected $table = 'paquetes';
     use SoftDeletes;
+   
+
+    public function lotes()
+    {
+        return $this->belongsToMany(Lote::class);
+    }
 }

@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Camiones extends Model
+class Conducen extends Model
 {
     use HasFactory;
-    protected $table = 'camiones';
-    protected $fillable = ['id_camion'];
+    protected $table = 'conducen';
     use SoftDeletes;
 }
