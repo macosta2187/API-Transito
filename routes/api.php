@@ -9,6 +9,7 @@ use App\Http\Controllers\TransportanController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ConformanController;
 use App\Models\Camiones;
+use App\Models\Paquete;
 
 
 
@@ -28,3 +29,5 @@ Route::post('/guardar-transportan', [TransportanController::class, 'guardarTrans
 
 Route::get('/en-viaje', [ConformanController::class, 'Listar'])->middleware(Autenticacion::class)->middleware(Autenticacion::class);
 Route::put('/ActualizarEstatus/{id}', [ConformanController::class, 'ActualizarEstatus'])->middleware(Autenticacion::class);
+
+Route::get('/obtenerEstadoPorPaqueteId/{paqueteId}', [PaqueteController::class, 'obtenerEstadoPorPaqueteId']);

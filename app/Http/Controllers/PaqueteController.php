@@ -2,39 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paquete;
 use Illuminate\Http\Request;
+use App\Models\Paquete;
 
 class PaqueteController extends Controller
 {
 
-    /*
-    public function Listar()
+    public function obtenerEstadoPorPaqueteId(Request $request, $codigo_seguimiento)
     {
-        $paquetes = Paquete::all();
-        return response()->json($paquetes);
-    }
-
-    public function ActualizarEstatus(Request $request, $id)
-    {
-        $paquete = Paquete::find($id);
-
-        if (!$paquete) {
-            return response()->json(['message' => 'Paquete no encontrado'], 404);
+       
+        if (empty($codigo_seguimiento)) {
+            return response()->json(['error' => 'Código de seguimiento no válido'], 400);
         }
-
-        $nuevoEstatus = $request->input('estatus');
-        $estatusPermitidos = ['En Viaje', 'Despachado', 'Entregado'];
-
-        if (!in_array($nuevoEstatus, $estatusPermitidos)) {
-            return response()->json(['message' => 'Estatus no válido'], 400);
+    
+        $estado = $this->obtenerEstadoDeBaseDeDatos($codigo_seguimiento);    
+     
+        if ($estado === 'Estado no encontrado') {
+            return response()->json(['error' => 'Estado no encontrado'], 404); 
         }
-
-        $paquete->estatus = $nuevoEstatus;
-        $paquete->save();
-
-        return response()->json(['message' => 'Estatus actualizado correctamente'], 200);
+    
+        return response()->json(['codigo_seguimiento' => $codigo_seguimiento, 'estado' => $estado]);
     }
-    */
+    
+    private function obtenerEstadoDeBaseDeDatos($codigo_seguimiento) {        
+        $paquete = Paquete::where('codigo_seguimiento', $codigo_seguimiento)->first();
+    
+        if ($paquete) {           
+            return $paquete->estado;
+        } else {
+            return 'Estado no encontrado';
+        }
+    }
+    
+    
+  
 
 }
