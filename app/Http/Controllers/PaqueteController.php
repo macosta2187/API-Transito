@@ -35,6 +35,16 @@ class PaqueteController extends Controller
     }
     
     
+    public function listarPaquetesEnTransito()
+{
+    $paquetesEnTransito = Paquete::where('estado', 'En tránsito')->get();
+
+    return response()->json($paquetesEnTransito);
+}
+
+
+    
+    
   
 
 }
