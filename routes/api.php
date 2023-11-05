@@ -35,7 +35,7 @@ Route::get('/obtenerEstadoPorPaqueteId/{paqueteId}', [PaqueteController::class, 
 
 
 
-Route::get('/listar-rutas/{searchId}', [RutaController::class, 'listarRutas'])->name('listar.rutas');
-Route::get('paquetes-en-transito', [PaqueteController::class, 'listarPaquetesEnTransito']);
+Route::get('/listar-rutas/{searchId}', [RutaController::class, 'listarRutas'])->name('listar.rutas')->middleware(Autenticacion::class);
+Route::get('paquetes-en-transito', [PaqueteController::class, 'listarPaquetesEnTransito'])->middleware(Autenticacion::class);
 
 
