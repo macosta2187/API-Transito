@@ -42,7 +42,6 @@ class AlmacenController extends Controller
             $almacen->telefono = $request->input('telefono');
             $almacen->latitud = $request->input('latitud');
             $almacen->longitud = $request->input('longitud');
-
             $almacen->save();
     
            
@@ -54,12 +53,6 @@ class AlmacenController extends Controller
     
 
 
-    public function Listar()
-    {
-       
-       $almacenes = Almacen::all();
-        return view('almacenes.Listar', ['almacenes' => $almacenes]);
-    }
 
     public function eliminar($id)
     {        
@@ -93,13 +86,18 @@ public function Actualizar(Request $request, Almacen $almacen)
     $almacen->departamento = $request->input('departamento');
     $almacen->telefono = $request->input('telefono');
     $almacen->latitud = $request->input('latitud');
-    $almacen->longitud = $request->input('longitud');
-    
+    $almacen->longitud = $request->input('longitud');    
     $almacen->save();
+
+    return response()->json(['message' => 'Actualizado'], 200);
 }
 
 
-
+public function Listar(){
+   
+   $almacenes = Almacen::all();
+    return view('almacenes.Listar', ['almacenes' => $almacenes]);
+}
 
 
 }

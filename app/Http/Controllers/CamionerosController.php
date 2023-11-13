@@ -44,10 +44,6 @@ class CamionerosController extends Controller
         return response()->json(['error' => 'El camionero no existe'], 404);
     }
 
-    public function Editar(Camionero $camionero)
-    {
-        return view('camioneros.Editar', compact('camioneros'));
-    }
 
     public function Actualizar(Camionero $request, Camionero $camionero)
     {
@@ -58,10 +54,13 @@ class CamionerosController extends Controller
         $camionero->apellido = $request->input('apellido');
         $camionero->celular = $request->input('celular');
         $camionero->email = $request->input('email');
-        $camionero->fechanac = $request->input('fechanac');
-        
+        $camionero->fechanac = $request->input('fechanac');        
         $camionero->save();
         return response()->json($camionero);
     }
 
+
+    public function Editar(Camionero $camionero)    {
+        return view('camioneros.Editar', compact('camioneros'));
+    }
 }

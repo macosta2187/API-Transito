@@ -12,8 +12,7 @@ class TransportanController extends Controller
 
         $transportan = new Transportan;
         $transportan->hora = $request->input('hora');
-        $transportan->fecha = $request->input('fecha');
-        //si cambia status se guarda fecha y hora automatica
+        $transportan->fecha = $request->input('fecha');       
         $transportan->status = $request->input('status');
         $transportan->recorrido_realizado = $request->input('recorrido_realizado');        
         $transportan->save();

@@ -23,7 +23,6 @@ class CamionesController extends Controller
     {
 
         $camiones = Camiones::all();
-
         return response()->json($camiones);
     }
 
