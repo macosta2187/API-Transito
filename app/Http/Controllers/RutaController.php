@@ -16,7 +16,7 @@ class RutaController extends Controller
 public function listarRutas($idPaquete)
 {
     $estado = "En tránsito";
-    //$idPaquete = 16;
+   
     
     $montevideo = Almacen::where('departamento', 'Montevideo')->first();
 
