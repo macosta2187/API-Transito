@@ -8,6 +8,7 @@ use App\Http\Controllers\CamionesController;
 use App\Http\Controllers\TransportanController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\ConformanController;
+use App\Http\Controllers\RutaController;
 use App\Models\Camiones;
 use App\Models\Paquete;
 
@@ -31,3 +32,10 @@ Route::get('/en-viaje', [ConformanController::class, 'Listar'])->middleware(Aute
 Route::put('/ActualizarEstatus/{id}', [ConformanController::class, 'ActualizarEstatus'])->middleware(Autenticacion::class);
 
 Route::get('/obtenerEstadoPorPaqueteId/{paqueteId}', [PaqueteController::class, 'obtenerEstadoPorPaqueteId']);
+
+
+
+Route::get('/listar-rutas/{searchId}', [RutaController::class, 'listarRutas'])->name('listar.rutas')->middleware(Autenticacion::class);
+Route::get('paquetes-en-transito', [PaqueteController::class, 'listarPaquetesEnTransito'])->middleware(Autenticacion::class);
+
+
